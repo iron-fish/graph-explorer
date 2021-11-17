@@ -1,7 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import styled from '@emotion/styled'
-import { useZoom } from 'hooks/useZoom'
+// import { useZoom } from 'hooks/useZoom'
+import ZoomContext from 'contexts/ZoomContext'
 import HierarchySVG from 'svg/hierarchy.svg'
 import TabularSVG from 'svg/tabular.svg'
 import ChevronUp from 'svg/chevron-up.svg'
@@ -98,31 +99,34 @@ export const chevron = css`
 `
 
 export const FilterMenu = () => {
-  const { zoom, zoomIn, zoomOut } = useZoom()
   return (
-    <StyledMenu>
-      <ZoomUI>
-        <ZoomOut onClick={() => zoomOut()}>&minus;</ZoomOut>
-        <ActiveZoom zoom={zoom} />
-        <ZoomIn onClick={() => zoomIn()}>&#43;</ZoomIn>
-      </ZoomUI>
-      <ViewUI>
-        <TabularView>
-          <TabularSVG />
-        </TabularView>
-        <HierarchyView>
-          <HierarchySVG />
-        </HierarchyView>
-      </ViewUI>
-      <ForkUI>
-        <label>Forks</label>
-        <TotalForks>1/10</TotalForks>
-        <ForkNav>
-          <ChevronDown css={chevron} />
-          <ChevronUp css={chevron} />
-        </ForkNav>
-      </ForkUI>
-    </StyledMenu>
+    <ZoomContext.Consumer>
+      {({ zoom, zoomIn, zoomOut }) => (
+        <StyledMenu>
+          <ZoomUI>
+            <ZoomOut onClick={() => zoomOut()}>&minus;</ZoomOut>
+            <ActiveZoom zoom={zoom} />
+            <ZoomIn onClick={() => zoomIn()}>&#43;</ZoomIn>
+          </ZoomUI>
+          <ViewUI>
+            <TabularView>
+              <TabularSVG />
+            </TabularView>
+            <HierarchyView>
+              <HierarchySVG />
+            </HierarchyView>
+          </ViewUI>
+          <ForkUI>
+            <label>Forks</label>
+            <TotalForks>1/10</TotalForks>
+            <ForkNav>
+              <ChevronDown css={chevron} />
+              <ChevronUp css={chevron} />
+            </ForkNav>
+          </ForkUI>
+        </StyledMenu>
+      )}
+    </ZoomContext.Consumer>
   )
 }
 

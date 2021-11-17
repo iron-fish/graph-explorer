@@ -24,9 +24,9 @@ import fixture from 'fixture.json'
 
 import { StyledBlock } from './Block.styled'
 import { BlockRowProps, BlockRow } from './BlockRow'
-import useZoom from 'hooks/useZoom'
 import Scrubber from 'components/Explorer/Scrubber'
 import FilterMenu from 'components/Explorer/FilterMenu'
+import ZoomContext from 'contexts/ZoomContext'
 
 const uniqId = uniqBy((x: BlockRowProps) => x.id)
 
@@ -56,32 +56,28 @@ const findParents = curry((key: string, list: BlockRowProps[]) =>
   find(propEq('hash', key), list)
 )
 
-type Zoomable = {
-  children: ReactNode
-}
-
-const StyledHistory = ({ children }: Zoomable) => {
-  const { zoom } = useZoom()
-  console.log({ zoom })
+const StyledHistory = ({ children }: { children: ReactNode }) => {
   return (
-    <div
-      css={css`
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        font-size: ${zoom}rem;
-      `}
-    >
-      {children}
-    </div>
+    <ZoomContext.Consumer>
+      {({ zoom }) => (
+        <div
+          css={css`
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: ${zoom}rem;
+          `}
+        >
+          {children}
+        </div>
+      )}
+    </ZoomContext.Consumer>
   )
 }
 
 function History(props: any) {
   const { data = {}, error } = useSWR(API, fetcher)
-  console.log('Is data ready?', !!data)
-  console.log({ data, props })
   return (
     <StyledHistory>
       {error
@@ -96,10 +92,12 @@ function History(props: any) {
 type AppProps = { fallback?: Record<string, unknown> }
 export default function App({ fallback = fixture }: AppProps) {
   return (
-    <SWRConfig value={{ fallback }}>
+    <>
       <Scrubber />
       <FilterMenu />
-      <History />
-    </SWRConfig>
+      <SWRConfig value={{ fallback }}>
+        <History />
+      </SWRConfig>
+    </>
   )
 }
