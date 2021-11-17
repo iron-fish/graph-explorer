@@ -12,7 +12,7 @@ export const ColorBlock = ({ color, main }: ColorBlockProps) => (
     <div
       css={css`
         position: relative;
-        z-index: 100;
+        z-index: 30;
         width: calc(1.5em - 2px);
         height: calc(1.5em - 2px);
         background-color: ${color};

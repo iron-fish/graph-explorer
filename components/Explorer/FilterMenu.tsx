@@ -23,6 +23,7 @@ export const StyledMenu = styled.aside`
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: center;
+  z-index: 100;
 `
 
 export const buttonStyle = css`
@@ -70,9 +71,24 @@ export const ViewUI = styled.div`
   margin-left: 1em;
 `
 
-export const ActiveZoom = ({ zoom }: { zoom: number }) => {
+export const ActiveZoom = ({
+  zoom,
+  setZoom,
+}: {
+  zoom: number
+  setZoom: (x: number) => unknown
+}) => {
   const percentage = ((zoom / 1) * 100).toFixed(0) + '%'
-  return <StyledActiveZoom value={percentage} type="text" />
+  return (
+    <StyledActiveZoom
+      onChange={e => {
+        const raw = parseInt(e.target.value.replace('%', '')) / 100
+        setZoom(raw)
+      }}
+      value={percentage}
+      type="text"
+    />
+  )
 }
 export const ForkUI = styled.div`
   display: flex;
@@ -101,11 +117,22 @@ export const chevron = css`
 export const FilterMenu = () => {
   return (
     <ZoomContext.Consumer>
-      {({ zoom, zoomIn, zoomOut }) => (
-        <StyledMenu>
+      {({ zoom, zoomIn, zoomOut, setZoom }) => (
+        <StyledMenu
+          onKeyDown={e => {
+            const { key } = e
+            if (key === 'ArrowUp' || key === 'ArrowRight') {
+              zoomIn()
+              return false
+            } else if (key === 'ArrowDown' || key === 'ArrowLeft') {
+              zoomOut()
+              return false
+            }
+          }}
+        >
           <ZoomUI>
             <ZoomOut onClick={() => zoomOut()}>&minus;</ZoomOut>
-            <ActiveZoom zoom={zoom} />
+            <ActiveZoom zoom={zoom} setZoom={setZoom} />
             <ZoomIn onClick={() => zoomIn()}>&#43;</ZoomIn>
           </ZoomUI>
           <ViewUI>

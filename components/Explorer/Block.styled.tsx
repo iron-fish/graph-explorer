@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 
 export const StyledBlock = styled.div`
   position: relative;
-  z-index: 100;
+  z-index: 40;
   padding: 1em;
   &:before,
   &:after {

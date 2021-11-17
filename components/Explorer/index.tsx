@@ -42,7 +42,6 @@ const API = '/api/blocks?limit=50'
 
 export async function getServerSideProps() {
   const value = await fetcher(API)
-  console.log({ value })
   return {
     props: {
       fallback: {
