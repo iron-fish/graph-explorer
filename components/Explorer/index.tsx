@@ -24,6 +24,7 @@ import fixture from 'fixture.json'
 import { StyledBlock } from './Block.styled'
 import { BlockRowProps, BlockRow } from './BlockRow'
 import useZoom from 'hooks/useZoom'
+import Scrubber from 'components/Explorer/Scrubber'
 import FilterMenu from 'components/Explorer/FilterMenu'
 
 const uniqId = uniqBy((x: BlockRowProps) => x.id)
@@ -80,6 +81,7 @@ type AppProps = { fallback?: Record<string, unknown> }
 export default function App({ fallback = fixture }: AppProps) {
   return (
     <SWRConfig value={{ fallback }}>
+      <Scrubber />
       <FilterMenu />
       <History />
     </SWRConfig>

@@ -35,6 +35,8 @@ const StyledHeader = styled.header`
   border: 1px solid #dedfe2;
   box-sizing: border-box;
   box-shadow: 0px 4px 11px rgba(0, 0, 0, 0.04);
+  position: relative;
+  z-index: 100;
   svg {
     max-width: 10rem;
   }

@@ -38,6 +38,9 @@ export const BlockRow = ({
       height: 4rem;
       margin: 0.5rem;
       width: 12.5rem;
+      font-size: 16px;
+      line-height: 1.6rem%;
+      color: #7f7f7f;
     `}
   >
     {sequence}
