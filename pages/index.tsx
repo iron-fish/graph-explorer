@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <main
       css={css`
-        font-size: 14px;
+        font-size: 16px;
       `}
     >
       <Header />

@@ -29,7 +29,7 @@ function ComponentsOverview({ mode }: COProps) {
         >
           <HexFish
             css={css`
-              max-width: 3rem;
+              max-width: 3em;
               fill: ${NAMED_COLORS.BLACK};
             `}
           />{' '}

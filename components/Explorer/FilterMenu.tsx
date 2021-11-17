@@ -9,14 +9,14 @@ import ChevronDown from 'svg/chevron-down.svg'
 
 export const StyledMenu = styled.aside`
   position: fixed;
-  right: 1rem;
-  top: 7rem;
-  width: 13.5rem;
-  height: 5.5rem;
+  right: 1em;
+  top: 7em;
+  width: 13.5em;
+  height: 5.5em;
   border: 1px solid #dedfe2;
   background-color: white;
   border-radius: 4px;
-  padding: 1.5rem;
+  padding: 1.5em;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -26,8 +26,8 @@ export const StyledMenu = styled.aside`
 
 export const buttonStyle = css`
   cursor: pointer;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2.25em;
+  height: 2.25em;
   border: 1px solid #dedfe2;
   background-color: white;
 `
@@ -49,24 +49,24 @@ export const HierarchyView = styled.button`
   border-radius: 0 4px 4px 0;
 `
 export const StyledActiveZoom = styled.input`
-  padding: 0.375rem 0;
+  padding: 0.375em 0;
   border: 1px solid #dedfe2;
-  max-width: 3rem;
+  max-width: 3em;
   text-align: center;
 `
 export const ZoomUI = styled.div`
   display: flex;
   flex-direction row;
-  max-width: 8rem;
-  width: 8rem;
+  max-width: 8em;
+  width: 8em;
   `
 
 export const ViewUI = styled.div`
   display: flex;
   flex-direction: row;
-  max-width: 4.5rem;
-  width: 4.5rem;
-  margin-left: 1rem;
+  max-width: 4.5em;
+  width: 4.5em;
+  margin-left: 1em;
 `
 
 export const ActiveZoom = ({ zoom }: { zoom: number }) => {
@@ -79,14 +79,14 @@ export const ForkUI = styled.div`
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1rem;
+  margin-top: 1em;
 `
 
 export const TotalForks = styled.span`
   font-weight: bolder;
 `
 export const ForkNav = styled.div`
-  width: 3.5rem;
+  width: 3.5em;
   border-left: 1px solid #dedfe2;
   padding-left: 4px;
 `
@@ -94,7 +94,7 @@ export const ForkNav = styled.div`
 export const chevron = css`
   width: 16px;
   height: 16px;
-  margin-left: 0.5rem;
+  margin-left: 0.5em;
 `
 
 export const FilterMenu = () => {

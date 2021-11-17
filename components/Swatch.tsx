@@ -52,7 +52,7 @@ export const Swatch = ({ name, hex }: SwatchProps) => {
       onClick={() => copyToClipboard(hex)}
       css={css`
         ${flexRow}
-        max-height: 5rem;
+        max-height: 5em;
         overflow: hidden;
         justify-content: space-between;
         align-items: center;
@@ -65,9 +65,9 @@ export const Swatch = ({ name, hex }: SwatchProps) => {
           justify-content: space-between;
           align-items: center;
           min-width: 49%;
-          min-height: 5rem;
+          min-height: 5em;
           align-self: flex-start;
-          padding: 0 1rem;
+          padding: 0 1em;
           background-color: ${hex};
           color: ${blackOrWhite(hex)};
         `}
@@ -80,7 +80,7 @@ export const Swatch = ({ name, hex }: SwatchProps) => {
           ${flexColumn}
           justify-content: center;
           align-items: center;
-          min-height: 5rem;
+          min-height: 5em;
           width: 17%;
           background: ${q3};
           color: ${blackOrWhite(hex)};
@@ -93,7 +93,7 @@ export const Swatch = ({ name, hex }: SwatchProps) => {
           ${flexColumn}
           justify-content: center;
           align-items: center;
-          min-height: 5rem;
+          min-height: 5em;
           width: 17%;
           background: ${q2};
           color: ${blackOrWhite(hex)};
@@ -106,7 +106,7 @@ export const Swatch = ({ name, hex }: SwatchProps) => {
           ${flexColumn}
           justify-content: center;
           align-items: center;
-          min-height: 5rem;
+          min-height: 5em;
           width: 17%;
           background: ${q1};
           color: ${blackOrWhite(hex)};

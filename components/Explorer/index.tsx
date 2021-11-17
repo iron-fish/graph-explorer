@@ -13,6 +13,7 @@ import {
   map,
   addIndex,
 } from 'ramda'
+import { ReactNode } from 'react'
 import { css } from '@emotion/react'
 import useSWR, { SWRConfig } from 'swr'
 import Unusual from 'unusual'
@@ -55,10 +56,13 @@ const findParents = curry((key: string, list: BlockRowProps[]) =>
   find(propEq('hash', key), list)
 )
 
-function History(props: any) {
-  const { data = {}, error } = useSWR(API, fetcher)
-  console.log('Is data ready?', !!data)
-  console.log({ data, props })
+type Zoomable = {
+  children: ReactNode
+}
+
+const StyledHistory = ({ children }: Zoomable) => {
+  const { zoom } = useZoom()
+  console.log({ zoom })
   return (
     <div
       css={css`
@@ -66,15 +70,27 @@ function History(props: any) {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        font-size: ${zoom}rem;
       `}
     >
+      {children}
+    </div>
+  )
+}
+
+function History(props: any) {
+  const { data = {}, error } = useSWR(API, fetcher)
+  console.log('Is data ready?', !!data)
+  console.log({ data, props })
+  return (
+    <StyledHistory>
       {error
         ? error.toString()
         : pipe(
             // map(raw => <Debug {...raw} key={Math.random()} />)
             map((raw: BlockRowProps) => <BlockRow key={raw.id} {...raw} />)
           )(data.data || [])}
-    </div>
+    </StyledHistory>
   )
 }
 type AppProps = { fallback?: Record<string, unknown> }

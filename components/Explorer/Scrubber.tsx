@@ -6,7 +6,7 @@ const TickLink = styled.div`
   position: fixed;
   height: 100%;
   max-height: 100vh;
-  margin-left: 4rem;
+  margin-left: 4em;
   border-right: 0.5px dashed #dedfe2;
   width: 1px;
   top: 0;

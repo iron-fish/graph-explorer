@@ -7,20 +7,20 @@ const Search = styled.div`
   flex-direction: row;
   align-items: flex-start;
   justify-content: center;
-  padding: 0.75rem 1.5rem;
-  border-radius: 7.125rem;
+  padding: 0.75em 1.5em;
+  border-radius: 7.125em;
   border: 1px solid #dedfe2;
-  height: calc(2.875rem - 1.5rem);
-  width: 26.5rem;
+  height: calc(2.875em - 1.5em);
+  width: 26.5em;
   align-self: center;
   svg {
-    margin-top: 0.25rem;
+    margin-top: 0.25em;
   }
   input {
     margin: 0;
     display: inline-block;
     border: 0;
-    width: calc(100% - 0.5rem);
+    width: calc(100% - 0.5em);
   }
 `
 
@@ -30,7 +30,7 @@ const StyledHeader = styled.header`
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  height: 5.875rem;
+  height: 5.875em;
   background-color: white;
   border: 1px solid #dedfe2;
   box-sizing: border-box;
@@ -38,7 +38,7 @@ const StyledHeader = styled.header`
   position: relative;
   z-index: 100;
   svg {
-    max-width: 10rem;
+    max-width: 10em;
   }
 `
 const Header = () => (

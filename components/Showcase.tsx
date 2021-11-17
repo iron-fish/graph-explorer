@@ -17,8 +17,8 @@ export function Showcase({ headerColor, title, children }: ShowcaseProps) {
       <Col
         css={css`
           background: ${headerColor};
-          padding: 4rem 2rem;
-          width: calc(100% - 4rem);
+          padding: 4em 2em;
+          width: calc(100% - 4em);
           text-align: left;
         `}
       >

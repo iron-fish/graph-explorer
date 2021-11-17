@@ -13,8 +13,8 @@ export const ColorBlock = ({ color, main }: ColorBlockProps) => (
       css={css`
         position: relative;
         z-index: 100;
-        width: calc(1.5rem - 2px);
-        height: calc(1.5rem - 2px);
+        width: calc(1.5em - 2px);
+        height: calc(1.5em - 2px);
         background-color: ${color};
         border: 1px solid ${main ? '#dedfe2' : 'lime'};
       `}

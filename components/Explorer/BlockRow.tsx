@@ -35,11 +35,10 @@ export const BlockRow = ({
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-      height: 4rem;
-      margin: 0.5rem;
-      width: 12.5rem;
-      font-size: 16px;
-      line-height: 1.6rem%;
+      height: 4em;
+      margin: 0.5em;
+      width: 12.5em;
+      line-height: 1.6em;
       color: #7f7f7f;
     `}
   >
