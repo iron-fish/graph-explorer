@@ -1,6 +1,5 @@
 /** @jsxImportSource @emotion/react */
 import styled from '@emotion/styled'
-
 import {
   propEq,
   uniqBy,
@@ -18,10 +17,14 @@ import { css } from '@emotion/react'
 import useSWR, { SWRConfig } from 'swr'
 import Unusual from 'unusual'
 import pkg from 'package.json'
+
 import toColor from 'utils/graffitiToColor'
 import fixture from 'fixture.json'
+
 import { StyledBlock } from './Block.styled'
 import { BlockRowProps, BlockRow } from './BlockRow'
+import useZoom from 'hooks/useZoom'
+import FilterMenu from 'components/Explorer/FilterMenu'
 
 const uniqId = uniqBy((x: BlockRowProps) => x.id)
 
@@ -67,29 +70,6 @@ function History(props: any) {
       {error
         ? error.toString()
         : pipe(
-            /*(raw: BlockRowProps[]) =>
-              // @ts-ignore
-              reduce(
-                // @ts-ignore
-                (a: BlockRowProps[], b: BlockRowProps) => {
-                  const z = uniqId(a)
-                  const parent = findParents(b.previous_block_hash, raw)
-                  const alreadyPresent = z.includes(b)
-                  const alreadyParents = parent && z.includes(parent)
-                  if (alreadyParents && alreadyPresent) {
-                    return a
-                  }
-                  if (parent && !alreadyParents && !alreadyPresent) {
-                    return a.concat(parent).concat(b)
-                  }
-                  return a.concat(b)
-                },
-                []
-              )(raw),
-            blah => {
-              console.log('same?', blah === data.data)
-              return blah
-              },*/
             // map(raw => <Debug {...raw} key={Math.random()} />)
             map((raw: BlockRowProps) => <BlockRow key={raw.id} {...raw} />)
           )(data.data || [])}
@@ -100,6 +80,7 @@ type AppProps = { fallback?: Record<string, unknown> }
 export default function App({ fallback = fixture }: AppProps) {
   return (
     <SWRConfig value={{ fallback }}>
+      <FilterMenu />
       <History />
     </SWRConfig>
   )
