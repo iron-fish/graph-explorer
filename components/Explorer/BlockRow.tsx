@@ -54,6 +54,15 @@ export const BlockRow = ({
         color: #7f7f7f;
       `}
     >
+      {$active && (
+        <>
+          {JSON.stringify(
+            { hash, id, prevHash, sequence, main, graffiti, difficulty },
+            null,
+            2
+          )}
+        </>
+      )}
       {showHeight && sequence}
       <ColorBlock
         color={color}
