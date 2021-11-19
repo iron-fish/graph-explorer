@@ -1,7 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import styled from '@emotion/styled'
 import {
+  toPairs,
+  values,
+  groupBy,
   prop,
+  propOr,
   propEq,
   uniqBy,
   find,
@@ -25,6 +29,7 @@ import fixture from 'fixture-blocks.json'
 
 import { StyledBlock } from './Block.styled'
 import { BlockRowProps, BlockRow } from './BlockRow'
+import BlockMultiRow from './BlockMultiRow'
 import Scrubber from 'components/Explorer/Scrubber'
 import FilterMenu from 'components/Explorer/FilterMenu'
 import ZoomContext from 'contexts/ZoomContext'
@@ -109,28 +114,18 @@ function History({ data = fixture, error = '' }) {
     $allData,
     ])
    */
+  const prevHash = propOr('none', 'previous_block_hash')
   return (
     <StyledHistory>
       {error
         ? error.toString()
         : pipe(
-            // uniqId,
-            (raw: BlockRowProps[]) =>
-              reduce(
-                // @ts-ignore
-                (a: BlockRowProps[], b: BlockRowProps) => {
-                  const parent = findParents(b.previous_block_hash, raw)
-                  if (parent) {
-                    return a.concat(parent).concat(b)
-                  }
-                  return a.concat(b)
-                },
-                []
-              )(raw),
-            uniqId,
-            trace('wtf2?'),
-            // imap((raw, i) => <Debug {...raw} key={i} />)
-            map((raw: BlockRowProps) => <BlockRow key={raw.hash} {...raw} />)
+            groupBy(prevHash),
+            toPairs,
+            map(([key, raw]: [key: string, raw: BlockRowProps[]]) => (
+              <BlockMultiRow key={key} forks={raw} />
+            ))
+            // (raw: any) => <Debug key={Math.random()} {...raw} />
           )(data.data || [])}
     </StyledHistory>
   )

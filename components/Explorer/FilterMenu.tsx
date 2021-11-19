@@ -11,7 +11,7 @@ import ChevronDown from 'svg/chevron-down.svg'
 export const StyledMenu = styled.aside`
   position: fixed;
   right: 1em;
-  top: 7em;
+  top: calc(50% - 5em);
   width: 13.5em;
   height: 5.5em;
   border: 1px solid #dedfe2;

@@ -4,6 +4,7 @@ import ColorBlock from './Block'
 import { toColor } from 'utils/graffitiToColor'
 
 export interface BlockRowProps {
+  index?: number
   id: number
   hash: string
   sequence: number
@@ -14,9 +15,11 @@ export interface BlockRowProps {
   timestamp: string
   graffiti: string
   size: number
+  showHeight?: boolean
 }
 
 export const BlockRow = ({
+  index = -1,
   id,
   hash,
   sequence,
@@ -27,24 +30,27 @@ export const BlockRow = ({
   timestamp,
   graffiti,
   size,
+  showHeight = true,
 }: BlockRowProps) => (
   <div
     key={id}
     css={css`
       display: flex;
       flex-direction: row;
+      position: relative;
       justify-content: space-between;
       align-items: center;
       height: 4em;
       margin: 0.5em;
-      width: 12.5em;
+      width: ${!showHeight ? '3.5rem' : '12.5em'};
+      margin-left: ${!showHeight ? '4rem' : '0'};
       line-height: 1.6em;
       color: #7f7f7f;
       background-color: ${!main ? 'lime' : 'transparent'};
     `}
   >
-    {sequence}
-    <ColorBlock color={toColor(graffiti)} />
+    {showHeight && sequence}
+    <ColorBlock color={toColor(graffiti)} index={index} />
   </div>
 )
 
