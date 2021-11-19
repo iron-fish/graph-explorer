@@ -1,12 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react'
 import { StyledBlock } from './Block.styled'
-
-export type ColorBlockProps = {
-  color: string
-  index: number
-  graffiti: string
-}
+import { ColorBlockProps } from './types'
 
 const indices = {
   zero: `
@@ -27,8 +22,13 @@ transform: rotate(70deg);
 `,
 }
 
-export const ColorBlock = ({ color, index, graffiti }: ColorBlockProps) => (
-  <StyledBlock>
+export const ColorBlock = ({
+  active,
+  color,
+  index,
+  graffiti,
+}: ColorBlockProps) => (
+  <StyledBlock active={active}>
     <div
       css={css`
         position: relative;

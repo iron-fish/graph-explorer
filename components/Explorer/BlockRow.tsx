@@ -1,4 +1,5 @@
 /** @jsxImportSource @emotion/react */
+import { useState } from 'react'
 import { css } from '@emotion/react'
 import ColorBlock from './Block'
 import { toColor } from 'utils/graffitiToColor'
@@ -33,8 +34,11 @@ export const BlockRow = ({
   showHeight = true,
 }: BlockRowProps) => {
   const color = toColor(graffiti)
+  const [$active, $setActive] = useState<boolean>(false)
+  const toggle = () => $setActive(!$active)
   return (
     <div
+      onClick={toggle}
       key={id}
       css={css`
         display: flex;
@@ -42,7 +46,7 @@ export const BlockRow = ({
         position: relative;
         justify-content: space-between;
         align-items: center;
-        height: 4em;
+        height: ${$active ? '17em' : '4em'};
         margin: 0.5em;
         width: ${!showHeight ? '3.5em' : '12.5em'};
         margin-left: ${!showHeight ? '4em' : '0'};
@@ -51,7 +55,12 @@ export const BlockRow = ({
       `}
     >
       {showHeight && sequence}
-      <ColorBlock color={color} graffiti={graffiti} index={index} />
+      <ColorBlock
+        color={color}
+        graffiti={graffiti}
+        index={index}
+        active={$active}
+      />
     </div>
   )
 }

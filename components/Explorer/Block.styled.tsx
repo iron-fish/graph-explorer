@@ -1,9 +1,13 @@
 import styled from '@emotion/styled'
+import { ColorBlockProps } from './types'
 
-export const StyledBlock = styled.div`
+export const StyledBlock = styled.div<ColorBlockProps>`
   position: relative;
   z-index: 40;
   padding: 1em;
+  transition: width 0.3s ease-out, height 0.3s ease-out;
+  height: ${({ active }) => (active ? '17em' : '1.25em')};
+  width: ${({ active }) => (active ? '60em' : '1.25em')};
   &:before,
   &:after {
     position: absolute;
