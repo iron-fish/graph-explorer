@@ -19,6 +19,7 @@ export const multiply = curry((a: number, b: number) => a * b)
 export const generate = (x: string): string =>
   toString(16)(seeded(x) * Math.pow(2, 24))
 
-export const toColor = (x: string) => prefix('#', slice(0, 6, generate(x)))
+export const toColor = (x: string) =>
+  x ? prefix('#', slice(0, 6, generate(x))) : '.'
 
 export default toColor

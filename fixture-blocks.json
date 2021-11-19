@@ -4,7 +4,7 @@
     {
       "id": 685649,
       "hash": "0000005cc7096cc025927d723baf68ada2d403ae681e7b620e9eaf14efe23423",
-      "sequence": 593059,
+      "sequence": 593100,
       "previous_block_hash": "00000058de15751332ea0e45522179e347e2bd1dba57ef5aa537c7c1ce61d5cd",
       "main": false,
       "difficulty": 36298793,
@@ -17,13 +17,13 @@
     {
       "id": 685648,
       "hash": "0000005ba7096ec025927d723baf68ada2d403ae681e7b620e9eaf14efe32489",
-      "sequence": 593059,
+      "sequence": 593100,
       "previous_block_hash": "00000058de15751332ea0e45522179e347e2bd1dba57ef5aa537c7c1ce61d5cd",
       "main": false,
       "difficulty": 36298792,
       "transactions_count": 4,
       "timestamp": "2021-11-18T05:34:45.774Z",
-      "graffiti": "sqvadro",
+      "graffiti": "",
       "size": 178200,
       "object": "block"
     },
@@ -576,7 +576,7 @@
     {
       "id": 679225,
       "hash": "00000061f2b1da67e22451dbd7529020bad71f561b71d79cba8be46b29cb4913",
-      "sequence": 593059,
+      "sequence": 593100,
       "previous_block_hash": "00000058de15751332ea0e45522179e347e2bd1dba57ef5aa537c7c1ce61d5cd",
       "main": true,
       "difficulty": 38161192,

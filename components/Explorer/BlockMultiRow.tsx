@@ -14,14 +14,14 @@ export const BlockMultiRow = ({ forks = [] }: BlockMultiRowProps) => {
         flex-direction: row;
         margin-bottom: 0.75em;
         margin-left: ${totalForks === 3
-          ? '16em'
+          ? '15.75em'
           : totalForks === 2
-          ? '8em'
+          ? '7.75em'
           : '0'};
       `}
     >
       {forks
-        .sort((a, b) => a.main || b.main)
+        .sort((a, b) => (a.main ? -1 : b.main ? 1 : 0))
         .map((block: BlockRowProps, idx: number) => (
           <BlockRow
             key={block.id}

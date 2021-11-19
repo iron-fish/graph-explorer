@@ -3,73 +3,40 @@ import { useState } from 'react'
 import { css } from '@emotion/react'
 import ColorBlock from './Block'
 import { toColor } from 'utils/graffitiToColor'
+import { BlockRowProps } from './types'
 
-export interface BlockRowProps {
-  index?: number
-  id: number
-  hash: string
-  sequence: number
-  previous_block_hash: string
-  main: boolean
-  difficulty: number
-  transactions_count: number
-  timestamp: string
-  graffiti: string
-  size: number
-  showHeight?: boolean
-}
-
-export const BlockRow = ({
-  index = -1,
-  id,
-  hash,
-  sequence,
-  previous_block_hash: prevHash,
-  main,
-  difficulty,
-  transactions_count: transactionsTotal,
-  timestamp,
-  graffiti,
-  size,
-  showHeight = true,
-}: BlockRowProps) => {
+export const BlockRow = (props: BlockRowProps) => {
+  const { sequence, graffiti, index = -1, showHeight = true } = props
   const color = toColor(graffiti)
   const [$active, $setActive] = useState<boolean>(false)
   const toggle = () => $setActive(!$active)
   return (
     <div
       onClick={toggle}
-      key={id}
       css={css`
         display: flex;
         flex-direction: row;
         position: relative;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
         height: ${$active ? '17em' : '4em'};
         margin: 0.5em;
-        width: ${!showHeight ? '3.5em' : '12.5em'};
+        width: ${!showHeight ? '3.5em' : '100%'};
         margin-left: ${!showHeight ? '4em' : '0'};
         line-height: 1.6em;
         color: #7f7f7f;
       `}
     >
-      {$active && (
-        <>
-          {JSON.stringify(
-            { hash, id, prevHash, sequence, main, graffiti, difficulty },
-            null,
-            2
-          )}
-        </>
+      {showHeight && (
+        <div
+          css={css`
+            margin-right: 1em;
+          `}
+        >
+          {sequence}
+        </div>
       )}
-      {showHeight && sequence}
-      <ColorBlock
-        color={color}
-        graffiti={graffiti}
-        index={index}
-        active={$active}
-      />
+      <ColorBlock {...props} color={color} active={$active} />
     </div>
   )
 }
