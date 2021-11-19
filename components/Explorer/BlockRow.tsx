@@ -31,26 +31,29 @@ export const BlockRow = ({
   graffiti,
   size,
   showHeight = true,
-}: BlockRowProps) => (
-  <div
-    key={id}
-    css={css`
-      display: flex;
-      flex-direction: row;
-      position: relative;
-      justify-content: space-between;
-      align-items: center;
-      height: 4em;
-      margin: 0.5em;
-      width: ${!showHeight ? '3.5rem' : '12.5em'};
-      margin-left: ${!showHeight ? '4rem' : '0'};
-      line-height: 1.6em;
-      color: #7f7f7f;
-    `}
-  >
-    {showHeight && sequence}
-    <ColorBlock color={toColor(graffiti)} index={index} />
-  </div>
-)
+}: BlockRowProps) => {
+  const color = toColor(graffiti)
+  return (
+    <div
+      key={id}
+      css={css`
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        justify-content: space-between;
+        align-items: center;
+        height: 4em;
+        margin: 0.5em;
+        width: ${!showHeight ? '3.5em' : '12.5em'};
+        margin-left: ${!showHeight ? '4em' : '0'};
+        line-height: 1.6em;
+        color: #7f7f7f;
+      `}
+    >
+      {showHeight && sequence}
+      <ColorBlock color={color} graffiti={graffiti} index={index} />
+    </div>
+  )
+}
 
 export default BlockRow

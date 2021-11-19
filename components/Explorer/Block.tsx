@@ -5,6 +5,7 @@ import { StyledBlock } from './Block.styled'
 export type ColorBlockProps = {
   color: string
   index: number
+  graffiti: string
 }
 
 const indices = {
@@ -19,14 +20,14 @@ left: -3.15em;
 transform: rotate(45deg);
 `,
   two: `
-height: 14rem;
+height: 14em;
 top: -2.2em;
 left: -7.6em;
 transform: rotate(70deg);
 `,
 }
 
-export const ColorBlock = ({ color, index }: ColorBlockProps) => (
+export const ColorBlock = ({ color, index, graffiti }: ColorBlockProps) => (
   <StyledBlock>
     <div
       css={css`
@@ -34,7 +35,15 @@ export const ColorBlock = ({ color, index }: ColorBlockProps) => (
         z-index: 30;
         width: calc(1.5em - 2px);
         height: calc(1.5em - 2px);
-        background-color: ${color};
+        background: ${color.includes('.')
+          ? `repeating-linear-gradient(
+      -45deg,
+      white,
+      white 2px,
+      black 2px,
+      black 4px
+    );`
+          : color};
         &::after {
           position: absolute;
           content: '';
