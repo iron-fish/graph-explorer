@@ -3,7 +3,7 @@ module.exports = {
     return [
       {
         source: '/api/:path*',
-        destination: 'https://api-production.ironfish.network/:path*',
+        destination: 'https://api.ironfish.network/:path*',
       },
     ]
   },

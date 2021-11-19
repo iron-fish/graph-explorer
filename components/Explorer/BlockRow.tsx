@@ -40,10 +40,11 @@ export const BlockRow = ({
       width: 12.5em;
       line-height: 1.6em;
       color: #7f7f7f;
+      background-color: ${!main ? 'lime' : 'transparent'};
     `}
   >
     {sequence}
-    <ColorBlock color={toColor(graffiti)} main={main} />
+    <ColorBlock color={toColor(graffiti)} />
   </div>
 )
 

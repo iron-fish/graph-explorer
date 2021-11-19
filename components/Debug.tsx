@@ -4,3 +4,5 @@ export const Debug = (props: any) => (
     <code>{j2(props)}</code>
   </pre>
 )
+
+export default Debug

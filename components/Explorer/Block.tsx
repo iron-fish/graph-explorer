@@ -4,10 +4,9 @@ import { StyledBlock } from './Block.styled'
 
 export type ColorBlockProps = {
   color: string
-  main: boolean
 }
 
-export const ColorBlock = ({ color, main }: ColorBlockProps) => (
+export const ColorBlock = ({ color }: ColorBlockProps) => (
   <StyledBlock>
     <div
       css={css`
@@ -16,7 +15,6 @@ export const ColorBlock = ({ color, main }: ColorBlockProps) => (
         width: calc(1.5em - 2px);
         height: calc(1.5em - 2px);
         background-color: ${color};
-        border: 1px solid ${main ? '#dedfe2' : 'lime'};
       `}
     />
   </StyledBlock>
