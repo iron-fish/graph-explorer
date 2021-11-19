@@ -7,6 +7,25 @@ export type ColorBlockProps = {
   index: number
 }
 
+const indices = {
+  zero: `
+height: 2em;
+top: 2.75em;
+`,
+  one: `
+height: 6.25em;
+top: 1.525em;
+left: -3.15em;
+transform: rotate(45deg);
+`,
+  two: `
+height: 14rem;
+top: -2.2em;
+left: -7.6em;
+transform: rotate(70deg);
+`,
+}
+
 export const ColorBlock = ({ color, index }: ColorBlockProps) => (
   <StyledBlock>
     <div
@@ -22,17 +41,11 @@ export const ColorBlock = ({ color, index }: ColorBlockProps) => (
           width: 1px;
           background-color: #dedfe2;
           display: inline-block;
-          ${index === 0
-            ? `
-            height: 2em;
-            top: 2.75em;
-            `
-            : `
-            height: 6.25em;
-            top: 1.525em;
-            left: -3.15em;
-            transform: rotate(45deg);
-            `}
+          ${index === 2
+            ? indices.two
+            : index === 1
+            ? indices.one
+            : indices.zero}
         }
       `}
     />

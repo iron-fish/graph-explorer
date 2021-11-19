@@ -46,7 +46,6 @@ export const BlockRow = ({
       margin-left: ${!showHeight ? '4rem' : '0'};
       line-height: 1.6em;
       color: #7f7f7f;
-      background-color: ${!main ? 'lime' : 'transparent'};
     `}
   >
     {showHeight && sequence}
